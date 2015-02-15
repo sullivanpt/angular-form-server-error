@@ -1,0 +1,11 @@
+{
+  "name": "angular-form-server-error",
+  "version": "0.0.1",
+  "main": "src/server-error.js",
+  "ignore": [
+    "test/"
+  ],
+  "dependencies": {
+    "angular": "^1.3.0"
+  }
+}

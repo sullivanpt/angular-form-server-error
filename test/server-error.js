@@ -5,7 +5,7 @@ describe('Directive and Factory: serverError and serverErrorPopulate', function 
   var serverErrorParseMock;
 
   // load the directive's module
-  beforeEach(module('bettyPinkApp', function ($provide) {
+  beforeEach(module('zvmzio.server.error', function ($provide) {
 
     // stub out serverErrorParse so it doesn't affect tests
     serverErrorParseMock = function (errors) { return errors; };
@@ -90,7 +90,7 @@ describe('Directive and Factory: serverError and serverErrorPopulate', function 
 describe('Factory: serverErrorParse', function () {
 
   // load the directive's module
-  beforeEach(module('bettyPinkApp'));
+  beforeEach(module('zvmzio.server.error'));
 
   // instantiate service
   var serverErrorParse;

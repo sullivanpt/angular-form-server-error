@@ -2,6 +2,9 @@
 
 Documentation coming some day, for now read the comments ;-)
 
+
+Here's a quick example to get the idea:
+
 ```
 <div ng-controller="MyCtrl">
   <form name="form" ng-submit="onSubmit">
@@ -16,13 +19,14 @@ Documentation coming some day, for now read the comments ;-)
 
 <script>
 
-  angular.module('myApp').controller('MyCtrl', function ($scope, $http, serverErrorPopulate) {
-    this.onSubmit = function onSubmit(form) {
-      $http.post('/url', form).error(function (response) {
-        serverErrorPopulate(form, response);
-      });
-    };
-  });
+  angular.module('myApp',['zvmzio.server.error'])
+    .controller('MyCtrl', function ($scope, $http, serverErrorPopulate) {
+      this.onSubmit = function onSubmit(form) {
+        $http.post('/url', form).error(function (response) {
+          serverErrorPopulate(form, response);
+        });
+      };
+    });
 
 <script>
 ```

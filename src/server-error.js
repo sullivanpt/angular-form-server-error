@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc directive
- * @name bettyPinkApp.directive:serverError
+ * @name zvmzio-server-error.directive:serverError
  * @description
  * # serverError directive to clear the 'serverError' flag when the control is touched.
  * Use with serverErrorDistributor.
@@ -24,7 +24,7 @@
  * </div>
  *
  * <script>
- *   angular.module('myApp').controller('MyCtrl', function ($scope, $http, serverErrorPopulate) {
+ *   angular.module('myApp',['zvmzio.server.error']).controller('MyCtrl', function ($scope, $http, serverErrorPopulate) {
  *     this.onSubmit = function onSubmit(form) {
  *       $http.post('/url', form).error(function (response) {
  *         serverErrorPopulate(form, response);
@@ -33,7 +33,7 @@
  *   });
  * <script>
  */
-angular.module('bettyPinkApp')
+angular.module('zvmzio.server.error')
   .directive('serverError', function () {
     return {
       restrict: 'A',
