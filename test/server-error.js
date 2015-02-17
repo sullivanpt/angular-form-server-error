@@ -98,9 +98,9 @@ describe('Factory: serverErrorParse', function () {
     serverErrorParse = _serverErrorParse_;
   }));
 
-  it('should return a valid non empty error map when passed a falsey value', function () {
-    expect(serverErrorParse(null)).toEqual({ other: 'an undefined error occurred' });
-    expect(serverErrorParse('')).toEqual({ other: 'an undefined error occurred' });
+  it('should return a valid empty error map when passed a falsey value', function () {
+    expect(serverErrorParse(null)).toEqual({});
+    expect(serverErrorParse('')).toEqual({});
   });
 
   it('should return a valid empty error map unchanged', function () { // TODO: maybe this should return 'an undefined error occurred'
@@ -129,4 +129,5 @@ describe('Factory: serverErrorParse', function () {
     };
     expect(serverErrorParse(invalid)).toEqual({ key1: 'string2' });
   });
+
 });

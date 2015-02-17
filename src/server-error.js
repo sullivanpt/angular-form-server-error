@@ -24,13 +24,15 @@
  * </div>
  *
  * <script>
- *   angular.module('myApp',['zvmzio.server.error']).controller('MyCtrl', function ($scope, $http, serverErrorPopulate) {
- *     this.onSubmit = function onSubmit(form) {
- *       $http.post('/url', form).error(function (response) {
- *         serverErrorPopulate(form, response);
- *       });
- *     };
- *   });
+ *   angular.module('myApp', ['zvmzio.server.error'])
+ *     .controller('MyCtrl', function ($scope, $http, serverErrorPopulate) {
+ *       this.onSubmit = function onSubmit(form) {
+ *         serverErrorPopulate(form, null); // optional: clears previous server errors for success path
+ *         $http.post('/url', form).error(function (response) {
+ *           serverErrorPopulate(form, response);
+ *         });
+ *       };
+ *     });
  * <script>
  */
 angular.module('zvmzio.server.error')
@@ -92,13 +94,16 @@ angular.module('zvmzio.server.error')
 /**
  * Helper build an errorMap from an arbitrary set of rules representing a server response.
  * Note: this mutates the original object.
+ *
+ * When errors is falsey or the empty object errors are cleared.
+ * When errors is not an object but truthy it id converted to an error on the field 'other'.
  */
   .factory('serverErrorParse', function () {
     return function (errors) {
 
-      // if errors is falsey we know nothing, so assume something is wrong
+      // if errors is falsy we assume nothing is actually wrong
       if (!errors) {
-        return { other: 'an undefined error occurred' };
+        return {};
       }
 
       // ensure we can parse errors an object
@@ -108,7 +113,7 @@ angular.module('zvmzio.server.error')
 
       // ensure each value is a simple string
       angular.forEach(errors, function (value, key) {
-        if (typeof value === 'object') { // a parseable error
+        if (value && typeof value === 'object') { // a parseable error
           if (value.path === key && value.message) { // a mongoose error
             errors[key] = value.message;
           }
