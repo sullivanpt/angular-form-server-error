@@ -1,0 +1,17 @@
+{
+    "plugins": ["plugins/markdown"],
+
+    "markdown": {
+        "parser": "marked"
+    },
+    
+    "templates": {
+        "default": {
+            "outputSourceFiles": true
+        },
+        "systemName": "angular-form-server-error",
+        "copyright": "Copyright (c) 2015 Patrick Sullivan",
+        "theme": "spacelab",
+        "linenums": true
+    }
+}

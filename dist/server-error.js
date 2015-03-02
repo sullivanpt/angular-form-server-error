@@ -1,3 +1,12 @@
+/*!
+ * angular-form-server-error
+ * https://github.com/sullivanpt/angular-form-server-error
+ *
+ * Copyright (c) 2015 Patrick Sullivan
+ * MIT License
+ */
+;
+// {revision:"caeef7b",version:"0.0.2"};;
 'use strict';
 
 /**
@@ -128,3 +137,4 @@ angular.module('zvmzio.server.error', [])
       return errors;
     };
   });
+

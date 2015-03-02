@@ -1,0 +1,12 @@
+# This project
+node_modules
+npm-debug.log
+.tmp
+.externalToolBuilders
+.settings
+.project
+
+# IntelliJ
+.idea/
+*.iml
+
